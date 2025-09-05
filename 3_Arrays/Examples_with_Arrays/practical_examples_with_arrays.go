@@ -1,5 +1,14 @@
 // Senior Data Scientist.: Dr. Eddy Giusepe Chirinos Isidro
 
+/*
+RUN
+---
+go run practical_examples_with_arrays.go
+
+FORMATANDO O CÓDIGO
+-------------------
+gofmt -w practical_examples_with_arrays.go
+*/
 package main
 
 import "fmt"
@@ -18,7 +27,7 @@ func main() {
 
 	// Exemplo 2: Calcular a média de um array de números:
 	temperaturas := [5]float64{23.5, 25.2, 22.8, 24.1, 26.3}
-	
+
 	fmt.Println("\nOs valores das 5 temperaturas são:", temperaturas)
 	media_tem := calculaMedia(temperaturas)
 	fmt.Printf("A média das temperaturas é: %.2f\n", media_tem)
@@ -42,7 +51,6 @@ func encontrarMaiorMenor(array [7]int) (int, int) {
 	}
 	return maior, menor
 }
-
 
 func calculaMedia(array [5]float64) float64 {
 	soma := 0.0
