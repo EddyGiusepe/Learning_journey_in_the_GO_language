@@ -13,9 +13,13 @@ Link de estudo: https://go.dev/doc/effective_go
 RUN:
 ---
 go run hello_GO.go
-*/
 
+FORMATANDO O CÓDIGO
+-------------------
+gofmt -w hello_GO.go
+*/
 package main // Declaração do pacote principal. Deve ser "main" para ser um programa executável.
+
 import "fmt" // Importa o pacote fmt (format). É um pacote que contém funções para formatação de strings.
 
 func main() { // Função principal. É a função que será executada automaticamente quando o programa for executado.
