@@ -1,5 +1,14 @@
 // Senior Data Scientist.: Dr. Eddy Giusepe Chirinos Isidro
 
+/*
+RUN
+---
+go run multidimensional_arrays.go
+
+FORMATANDO O CÓDIGO
+-------------------
+gofmt -w multidimensional_arrays.go
+*/
 package main
 
 import (
