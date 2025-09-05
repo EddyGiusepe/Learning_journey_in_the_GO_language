@@ -3,6 +3,10 @@
 RUN
 ---
 go run one_dimensional_arrays.go
+
+FORMATANDO O CÓDIGO
+-------------------
+gofmt -w one_dimensional_arrays.go
 */
 
 package main
