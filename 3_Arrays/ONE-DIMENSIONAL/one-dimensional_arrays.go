@@ -2,7 +2,7 @@
 /*
 RUN
 ---
-go run arrays.go
+go run one_dimensional_arrays.go
 */
 
 package main
