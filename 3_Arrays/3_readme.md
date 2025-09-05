@@ -2,146 +2,6 @@
 
 <font color="pink">Senior Data Scientist.: Dr. Eddy Giusepe Chirinos Isidro</font>
 
-Repositório para documentar e compartilhar minha jornada aprendendo a linguagem Go do zero, incluindo exemplos de código, anotações e exercícios práticos.
-
-
-![](https://meneguite.com/2017/10/01/golang-desbravando-uma-linguagem-de-programacao-parte-1/001.gif)
-
-
-## <font color="red">`Estudo 1:` Conceitos básicos e setup em GO</font>
-
-1. **Primeiros Passos com Go**
-
-O primeiro é instalar o Go:
-
-```bash
-sudo apt update
-sudo apt upgrade golang-go
-```
-Do [site oficial](https://go.dev/doc/install), temos:
-
-```bash
-# Baixar o Go:
-wget https://go.dev/dl/go1.25.0.linux-amd64.tar.gz
-
-sudo rm -rf /usr/local/go && tar -C /usr/local -xzf go1.25.0.linux-amd64.tar.gz
-
-ou
-
-sudo apt remove golang-go
-
-# Extrair o novo Go:
-sudo tar -C /usr/local -xzf go1.25.0.linux-amd64.tar.gz
-
-export PATH=$PATH:/usr/local/go/bin
-
-go version
-```
-
-Logo verificamos a instalação:
-
-```bash
-go version
-```
-
-   ### Estrutura do Primeiro Programa (`main.go`)
-   
-   ```go
-   package main       // Declaração do pacote
-   
-   import "fmt"       // Importação de pacote
-   
-   func main() {      // Função principal
-       fmt.Println("Olá, Mundo!")
-   }
-   ```
-   
-   #### Explicação:
-   
-   - **`package main`**: Todo programa `Go` começa declarando a qual pacote pertence. O pacote `main` é especial - indica que este arquivo é um ponto de entrada executável, não uma biblioteca.
-   
-   - **`import "fmt"`**: Importa o pacote de formatação padrão do Go, necessário para funções de entrada/saída como `Println`. Os imports são explícitos em Go.
-   
-   - **`func main()`**: Ponto de entrada do programa. Quando executamos um programa Go, a função `main()` é chamada automaticamente. Todo programa executável precisa ter uma função `main` no pacote `main`.
-   
-   ### Sistema de Módulos Go
-   
-   #### Arquivo `go.mod`
-   ```
-   module intro-go
-   
-   go 1.22.2
-   ```
-   
-   - **`module intro-go`**: Define o nome do módulo, que serve como identificador e prefixo para importação interna.
-   
-   - **`go 1.22.2`**: Versão do Go utilizada no desenvolvimento, garantindo compatibilidade.
-   
-   #### Arquivo `go.sum`
-   Este arquivo é gerado automaticamente quando dependências externas são adicionadas. Ele contém hashes criptográficos que verificam a integridade das dependências, garantindo que todos usem exatamente a mesma versão.
-   
-   ### Comandos Básicos Utilizados
-   
-   1. **Inicializar um módulo**:
-      ```
-      go mod init intro-go
-      ```
-      Cria o arquivo go.mod e configura o diretório como um módulo Go.
-   
-   2. **Executar o programa**:
-      ```
-      go run main.go
-      ```
-      Compila e executa o programa em um único comando, ideal para desenvolvimento.
-   
-   3. **Formatar o código**:
-      
-   * Visualizar as mudanças (sem alterar o arquivo):
-      ```go
-      gofmt meu_script.go
-
-   * Mostrar apenas as diferenças:
-      ```go
-      gofmt -d meu_script.go
-      ```
-
-   * Aplicar as mudanças diretamente no arquivo:
-      ```go
-      gofmt -w meu_script.go
-      ```
-
-Formata automaticamente o código conforme convenções oficiais de Go.
-   
-   4. **Gerenciar dependências**:
-      ```
-      go get github.com/algum/pacote
-      ```
-      Baixa e adiciona uma dependência ao projeto.
-   
-   5. **Limpar dependências não utilizadas**:
-      ```
-      go mod tidy
-      ```
-      Remove pacotes não utilizados do go.mod e go.sum.
-   
-   ### Conceitos Fundamentais Demonstrados
-   
-   - **Sintaxe Limpa**: Go prioriza legibilidade e simplicidade.
-   - **Compilação Estática**: Programas Go são compilados em binários independentes.
-   - **Gerenciamento de Dependências**: Sistema de módulos elimina "dependency hell".
-   - **Formatação Padrão**: Convenções de estilo embutidas na linguagem.
-   - **Tipagem Forte**: Go é estaticamente tipado, detectando erros na compilação.
-   
-   ### Diferenças em Relação a Outras Linguagens
-   
-   - **Sem Necessidade de Ambientes Virtuais**: Diferente de Python (venv), Go usa módulos.
-   - **Compilação vs. Interpretação**: Go é compilado, diferente de Python e JavaScript.
-   - **Gerenciamento de Memória**: Go tem garbage collector automático.
-   - **Concorrência Embutida**: Go foi projetado para computação paralela.
-
-
-# <h1 align="center"><font color="gree">Dicas em Go</font></h1>
-
 ![](https://media.licdn.com/dms/image/v2/D4E12AQE3Wn1rrgc1_Q/article-cover_image-shrink_720_1280/B4EZiR1Z_VGcAI-/0/1754793361707?e=1761177600&v=beta&t=vCMchpvmDas0dIajhJy4xvFPigR8LLLODUb4LM2dO-w)
 
 
@@ -220,6 +80,25 @@ Alguns dos pacotes mais utilizados da biblioteca padrão:
 * Forte suporte à simultaneidade.
 * Builds cross-platform (compilação multiplataforma).
 * Grande biblioteca padrão.
+
+
+
+
+
+## <font color="red">`Estudo 3:` Arrays</font>
+
+``Arrays`` são essencialmente espaços de armazenamento que podem ser preenchidos com tantos dados quanto o usuário desejar. Variáveis, ao contrário de arrays, podem conter apenas um único pedaço de dados. Agora há alguns cuidados. ``Por exemplo``, um ``array`` é sintaticamente criado usando um único tipo de dados, assim como as variáveis. No entanto	, um ``array`` oferece facilidade de acesso e muitas mais capacidades quando se considera grandes/vastas quantidades de dados em comparação a uma variável (single storage space/value).
+
+Um ``array`` em golang tem tamanho fixo similar a ``C`` e ``C++`` que damos enquanto definimos. Não podemos alterar o tamanho do array dinamicamente enquanto o programa está em execução.
+
+Arrays em ``golang`` são definidos usando a seguinte sintaxe:
+
+```go
+var <nome do array> [<tamanho do array>] <tipo de dado armazenado no array>
+```
+
+
+
 
 
 
