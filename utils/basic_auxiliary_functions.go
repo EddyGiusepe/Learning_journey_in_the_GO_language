@@ -7,6 +7,10 @@ Este pacote é usado em outros scripts para realizar operações com arrays.
 FORMATANDO O CÓDIGO
 -------------------
 gofmt -w basic_auxiliary_functions.go
+
+NOTA:
+Usamos CAMEL CASE em nossos nomes de funções e variáveis, já que estamos 
+usando a linguagem Go.
 */
 
 package utils
@@ -16,11 +20,11 @@ package utils
 //   - array: array de 7 inteiros
 //
 // Retorna o maior e menor valor encontrados.
-func EncontrarMaiorMenor(array [7]int) (int, int) {
-	maior := array[0]
-	menor := array[0]
+func EncontrarMaiorMenor(numericalValues [7]int) (int, int) { // Usando "camelCase" --> numericalValues
+	maior := numericalValues[0]
+	menor := numericalValues[0]
 
-	for _, valor := range array {
+	for _, valor := range numericalValues {
 		if valor > maior {
 			maior = valor
 		}
@@ -36,12 +40,12 @@ func EncontrarMaiorMenor(array [7]int) (int, int) {
 //   - array: array de 5 float64
 //
 // Retorna a média dos valores.
-func CalculaMedia(array [5]float64) float64 {
+func CalculaMedia(numbers [5]float64) float64 { // Sem usar camelCase --> numbers
 	soma := 0.0
-	for _, valor := range array {
+	for _, valor := range numbers {
 		soma = soma + valor
 	}
-	return soma / float64(len(array))
+	return soma / float64(len(numbers))
 }
 
 // SomarElementos retorna a soma de todos os elementos de um array de inteiros.
@@ -49,9 +53,9 @@ func CalculaMedia(array [5]float64) float64 {
 //   - array: array de inteiros
 //
 // Retorna a soma dos valores.
-func SomarElementos(array []int) int {
+func SomarElementos(values []int) int {
 	soma := 0
-	for _, valor := range array {
+	for _, valor := range values {
 		soma += valor
 	}
 	return soma
@@ -63,9 +67,9 @@ func SomarElementos(array []int) int {
 //   - elemento: elemento a ser contado
 //
 // Retorna o número de vezes que o elemento aparece no array.
-func ContarElementos(array []int, elemento int) int {
+func ContarElementos(values []int, elemento int) int {
 	contador := 0
-	for _, valor := range array {
+	for _, valor := range values {
 		if valor == elemento {
 			contador++
 		}
