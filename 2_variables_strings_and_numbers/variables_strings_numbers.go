@@ -15,20 +15,13 @@ gofmt -w variables_strings_numbers.go
 */
 package main
 
-import "fmt"
+import (
+	"Learning_journey_in_the_GO_language/utils"
+	"fmt"
+)
 
 func main() {
-	// Definindo as cores ANSI:
-	const (
-		RESET  = "\033[0m"
-		RED    = "\033[31m"
-		GREEN  = "\033[32m"
-		YELLOW = "\033[33m"
-		BLUE   = "\033[34m"
-		PURPLE = "\033[35m"
-		CYAN   = "\033[36m"
-		WHITE  = "\033[37m"
-	)
+	// Agora usando as cores importadas do módulo utils (seguindo convenções Go).
 
 	// Strings:
 	var nameOne string = "Eddy Giusepe"
@@ -62,14 +55,14 @@ func main() {
 	fmt.Println("\n🔸 DECLARAÇÃO DE MÚLTIPLAS VARIÁVEIS:")
 	fmt.Println("=====================================")
 	var e, f, g int = 1, 2, 3
-	fmt.Printf(GREEN+"A variável 'e' tem o seguinte valor: %v e o tipo: %T\n"+RESET, e, e)
-	fmt.Printf(YELLOW+"A variável 'f' tem o seguinte valor: %v e o tipo: %T\n"+RESET, f, f)
-	fmt.Printf(RED+"A variável 'g' tem o seguinte valor: %v e o tipo: %T\n"+RESET, g, g)
+	fmt.Printf(utils.Green+"A variável 'e' tem o seguinte valor: %v e o tipo: %T\n"+utils.Reset, e, e)
+	fmt.Printf(utils.Yellow+"A variável 'f' tem o seguinte valor: %v e o tipo: %T\n"+utils.Reset, f, f)
+	fmt.Printf(utils.Red+"A variável 'g' tem o seguinte valor: %v e o tipo: %T\n"+utils.Reset, g, g)
 
 	// DECLARAÇÃO DE VARIÁVEIS SEM TIPO:
 	fmt.Println("\n🔸 DECLARAÇÃO DE VARIÁVEIS SEM TIPO:")
 	fmt.Println("=====================================")
 	var h = 10
-	fmt.Println(YELLOW+"A variável 'h' tem o seguinte valor: "+RESET, h)
+	fmt.Println(utils.Yellow+"A variável 'h' tem o seguinte valor: "+utils.Reset, h)
 
 }
