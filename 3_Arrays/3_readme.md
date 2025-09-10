@@ -82,9 +82,6 @@ Alguns dos pacotes mais utilizados da biblioteca padrão:
 * Grande biblioteca padrão.
 
 
-
-
-
 ## <font color="red">`Estudo 3:` Arrays</font>
 
 ``Arrays`` são essencialmente espaços de armazenamento que podem ser preenchidos com tantos dados quanto o usuário desejar. Variáveis, ao contrário de arrays, podem conter apenas um único pedaço de dados. Agora há alguns cuidados. ``Por exemplo``, um ``array`` é sintaticamente criado usando um único tipo de dados, assim como as variáveis. No entanto	, um ``array`` oferece facilidade de acesso e muitas mais capacidades quando se considera grandes/vastas quantidades de dados em comparação a uma variável (single storage space/value).
