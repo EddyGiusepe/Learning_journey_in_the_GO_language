@@ -3,24 +3,24 @@
 /*
 Integration with OpenAI
 =======================
-Neste script vamos integrar a API da OpenAI com
-a linguagem Go.
+In this script we will integrate the OpenAI API with
+the Go language.
 
 RUN
 ---
 go run integration_with_openai.go
 
-FORMATANDO O CÓDIGO
+FORMATTING THE CODE
 -------------------
 gofmt -w integration_with_openai.go
 
-LEMBRANDO A INSTALAÇÃO DE DEPENDÊNCIAS
+REMEMBERING THE INSTALLATION OF DEPENDENCIES
 --------------------------------------
 go get github.com/openai/openai-go/v2
 go get github.com/openai/openai-go/v2/option
 
-Pode usar o comando <go mod tidy> para limpar e reorganizar suas
-dependências.
+You can use the command <go mod tidy> to clean and reorganize your
+dependencies.
 */
 package main
 
@@ -38,20 +38,20 @@ import (
 func main() {
 	err := godotenv.Load("../.env")
 	if err != nil {
-		log.Fatal("Erro ao carregar o arquivo .env")
+		log.Fatal("Error loading the .env file")
 	}
 	OPENAI_API_KEY := os.Getenv("OPENAI_API_KEY")
 
-	// Criando cliente OpenAI usando variável de ambiente
+	// Creating OpenAI client using environment variable:
 	client := openai.NewClient(
 		option.WithAPIKey(OPENAI_API_KEY),
 	)
-	fmt.Printf("Cliente OpenAI criado com sucesso: %T\n", client)
+	fmt.Printf("OpenAI client created successfully: %T\n", client)
 
-	// Fazendo uma requisição de chat completion
+	// Making a chat completion request:
 	chatCompletion, err := client.Chat.Completions.New(context.TODO(), openai.ChatCompletionNewParams{
 		Messages: []openai.ChatCompletionMessageParamUnion{
-			openai.UserMessage("Apenas diga: 'Olá Dr. Eddy Giusepe'"),
+			openai.UserMessage("Just say: 'Hello Dr. Eddy Giusepe'"),
 		},
 		Model: openai.ChatModelGPT4o,
 	})
@@ -59,7 +59,6 @@ func main() {
 		panic(err.Error())
 	}
 
-	// Imprimindo a resposta da IA
-	fmt.Println("Resposta da OpenAI:")
+	fmt.Println("Response from the IA:")
 	println(chatCompletion.Choices[0].Message.Content)
 }
