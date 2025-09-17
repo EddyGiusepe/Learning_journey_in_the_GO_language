@@ -3,7 +3,7 @@
 /*
 Integration with OpenAI - Interactive Chat
 ==========================================
-In this script we will integrate the OpenAI API with
+In this script, I will integrate the OpenAI API with
 the Go language for interactive conversations.
 
 RUN
@@ -49,71 +49,69 @@ func main() {
 	client := openai.NewClient(option.WithAPIKey(os.Getenv("OPENAI_API_KEY")))
 	log.Printf(utils.Green+"OpenAI client created successfully: %T"+utils.Reset, client)
 
-	// Inicializar o histórico da conversa:
+	// Initializing the conversation history:
 	var messages []openai.ChatCompletionMessageParamUnion
 
-	// Mensagem inicial do sistema (opcional):
-	messages = append(messages, openai.SystemMessage(`Você é um assistente útil e amigável.
-	                                                  Se não souber a resposta, diga: 'Desculpe, não sei a resposta para isso.'.
-	                                                  Ademais, sempre responda em Espanhol e  no final adicione 
-													  um emoji dependendo da resposta.`))
+	// Initial system message (optional):
+	messages = append(messages, openai.SystemMessage(`You're a helpful and friendly assistant.
+	                                                  If you don't know the answer, say: 'Sorry, I don't know the answer for that.'
+	                                                  Moreover, always answer in Spanish and at the end add an emoji depending on the response.`))
 
-	fmt.Println(utils.Blue + "💬 Chat Interativo com OpenAI iniciado!" + utils.Reset)
-	fmt.Println(utils.Yellow + "Digite 'sair', 'quit' ou 'exit' para encerrar a conversa." + utils.Reset)
-	fmt.Println(strings.Repeat("-", 50))
+	fmt.Println(utils.Blue + "💬 Interactive Chat with OpenAI started!" + utils.Reset)
+	fmt.Println(utils.Yellow + "Type 'quit' or 'exit' to end the conversation." + utils.Reset)
+	fmt.Println(strings.Repeat("-", 47))
 
-	// Scanner para ler entrada do usuário
+	// Scanner to read user input
 	scanner := bufio.NewScanner(os.Stdin)
 
 	for {
-		// Solicitar entrada do usuário:
-		fmt.Print(utils.Green + "Você: " + utils.Reset)
+		// Request user input:
+		fmt.Print(utils.Green + "You: " + utils.Reset)
 		if !scanner.Scan() {
 			break
 		}
 
 		userInput := strings.TrimSpace(scanner.Text())
 
-		// Verificar se o usuário quer sair
-		if strings.ToLower(userInput) == "sair" ||
-			strings.ToLower(userInput) == "quit" ||
+		// Check if the user wants to quit
+		if strings.ToLower(userInput) == "quit" ||
 			strings.ToLower(userInput) == "exit" {
-			fmt.Println(utils.Blue + "👋 Tchau! Foi um prazer conversar com você!" + utils.Reset)
+			fmt.Println(utils.Blue + "👋 Bye! It was a pleasure talking to you!" + utils.Reset)
 			break
 		}
 
-		// Verificar se a entrada não está vazia
+		// Check if the input is not empty:
 		if userInput == "" {
 			continue
 		}
 
-		// Adicionar a mensagem do usuário ao histórico
+		// Add the user's message to the history:
 		messages = append(messages, openai.UserMessage(userInput))
 
-		// Fazer a requisição para a OpenAI API
-		fmt.Print(utils.Blue + "IA: " + utils.Reset)
+		// Make the request to the OpenAI API:
+		fmt.Print(utils.Blue + "AI: " + utils.Reset)
 		chatCompletion, err := client.Chat.Completions.New(context.TODO(), openai.ChatCompletionNewParams{
 			Messages: messages,
 			Model:    openai.ChatModelGPT4o,
 		})
 
 		if err != nil {
-			fmt.Printf(utils.Red+"❌ Erro ao comunicar com a IA: %v"+utils.Reset+"\n", err)
+			fmt.Printf(utils.Red+"❌ Error communicating with the AI: %v"+utils.Reset+"\n", err)
 			continue
 		}
 
-		// Obter e exibir a resposta da IA
+		// Get and display the AI's response:
 		aiResponse := chatCompletion.Choices[0].Message.Content
 		fmt.Println(aiResponse)
 
-		// Adicionar a resposta da IA ao histórico
+		// Add the AI's response to the history:
 		messages = append(messages, openai.AssistantMessage(aiResponse))
 
 		fmt.Println(strings.Repeat("-", 50))
 	}
 
-	// Verificar erros do scanner
+	// Check for scanner errors:
 	if err := scanner.Err(); err != nil {
-		log.Printf(utils.Red+"Erro ao ler entrada: %v"+utils.Reset, err)
+		log.Printf(utils.Red+"Error reading input: %v"+utils.Reset, err)
 	}
 }
