@@ -97,6 +97,4 @@ var <nome do array> [<tamanho do array>] <tipo de dado armazenado no array>
 
 
 
-
-
 Thank God 🤓!
