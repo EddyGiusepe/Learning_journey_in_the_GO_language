@@ -3,7 +3,8 @@
 /*
 Variables, Strings and Numbers
 ==============================
-Neste script vamos aprender como declarar variáveis, strings e números em Go.
+Neste script vamos aprender como declarar variáveis,
+strings e números em Go.
 
 RUN
 ---
