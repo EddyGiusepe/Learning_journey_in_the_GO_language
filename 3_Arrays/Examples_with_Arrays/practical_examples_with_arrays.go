@@ -2,7 +2,8 @@
 
 /*
 Neste script vamos aprender como usar arrays em Go.
-Ademais, vamos usar o "package utils" para operações com arrays.
+Ademais, vamos usar o "package utils" para operações
+com arrays.
 
 RUN
 ---
