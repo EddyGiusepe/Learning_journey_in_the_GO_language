@@ -55,9 +55,9 @@ func main() {
 	var messages []openai.ChatCompletionMessageParamUnion
 
 	// Initial system message (optional):
-	messages = append(messages, openai.SystemMessage(`You're a helpful and friendly assistant.
-	                                                  If you don't know the answer, say: 'Sorry, I don't know the answer for that.'
-	                                                  Moreover, always answer in Spanish and at the end add an emoji depending on the response.`))
+	messages = append(messages, openai.SystemMessage(`You are a polite and kind assistant. Answer user questions factually.
+	                                                  Also, always answer in Spanish and, at the end, add an emoji according to the answer.
+                                                      REMEMBER: Always answer in Spanish.`))
 
 	fmt.Println(utils.Blue + "💬 Interactive Chat with OpenAI started!" + utils.Reset)
 	fmt.Println(utils.Yellow + "Type 'quit' or 'exit' to end the conversation." + utils.Reset)
