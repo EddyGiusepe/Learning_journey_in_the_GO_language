@@ -16,8 +16,8 @@ gofmt -w integration_with_openai.go
 
 REMEMBERING THE INSTALLATION OF DEPENDENCIES
 --------------------------------------
-go get github.com/openai/openai-go/v2
-go get github.com/openai/openai-go/v2/option
+go get github.com/openai/openai-go/v3
+go get github.com/openai/openai-go/v3/option
 go get github.com/joho/godotenv
 
 You can use the command <go mod tidy> to clean and reorganize your
@@ -34,9 +34,11 @@ import (
 	"strings"
 
 	"Learning_journey_in_the_GO_language/utils"
+
 	"github.com/joho/godotenv"
-	"github.com/openai/openai-go/v2"
-	"github.com/openai/openai-go/v2/option"
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/option"
+	"github.com/openai/openai-go/v3/shared"
 )
 
 func main() {
@@ -92,7 +94,7 @@ func main() {
 		fmt.Print(utils.Blue + "AI: " + utils.Reset)
 		chatCompletion, err := client.Chat.Completions.New(context.TODO(), openai.ChatCompletionNewParams{
 			Messages: messages,
-			Model:    openai.ChatModelGPT4o,
+			Model:    shared.ChatModelGPT5Nano, // shared.ChatModelGPT5Nano  ou  shared.ChatModelGPT4o
 		})
 
 		if err != nil {
