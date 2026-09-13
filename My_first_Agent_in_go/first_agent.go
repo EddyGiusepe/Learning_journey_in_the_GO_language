@@ -1,22 +1,21 @@
 /*
 Senior Data Scientist.: Dr. Eddy Giusepe Chirinos Isidro
 
-Script: first_agent.go
-======================
-Este é um programa que cria um agente de pesquisa usando o modelo
-Gemini Flash da Google. O agente é capaz de pesquisar tópicos de
-forma detalhada e retornar os resultados.
+Script first_agent.go
+=====================
+This is a program that creates a search agent using the Gemini Flash
+model from Google. The agent is able to search topics in a detailed
+way and return the results.
 
-Link de estudo:
+Study links:
 - https://adk.dev/
 - https://adk.dev/get-started/go/
 
-Para interagir no terminal
---------------------------
+To interact in the terminal
+---------------------------
 go run first_agent.go
 
-
-RUN (API para o chat React; sem ADK Web):
+RUN (API for the React chat; without ADK Web):
 ---
 go run first_agent.go web api
 
@@ -24,11 +23,11 @@ UI:
 ---
 cd web && npm install && npm run dev
 
-ADK Web (só debug):
+ADK Web (only debug):
 ---
 go run first_agent.go web api webui
 
-FORMATANDO O CÓDIGO
+FORMATTING THE CODE
 --------------------
 gofmt -w first_agent.go
 */
